@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "sst bind next dev",
     "build": "cd ../.. && yarn build && cd apps/next && TAMAGUI_TARGET=web next build",
     "start": "next start",
     "serve": "NODE_ENV=production next start --port 8151",
@@ -24,6 +24,9 @@
   "devDependencies": {
     "@tamagui/next-plugin": "latest",
     "@types/node": "^18.6.4",
-    "eslint-config-next": "^13.0.4"
+    "aws-cdk-lib": "2.84.0",
+    "constructs": "10.1.156",
+    "eslint-config-next": "^13.0.4",
+    "sst": "^2.23.9"
   }
 }
