@@ -12,8 +12,12 @@ import {
 import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
 import React, { useState } from 'react'
 import { useLink } from 'solito/link'
+import { trpc } from 'app/utils/trpc'
 
 export function HomeScreen() {
+  const countQuery = trpc.count.getCount.useQuery();
+  const countMutation = trpc.count.addCount.useMutation();
+
   const linkProps = useLink({
     href: '/user/nate',
   })
@@ -26,7 +30,6 @@ export function HomeScreen() {
           Here's a basic starter to show navigating from one screen to another. This screen uses the
           same code on Next.js and React Native.
         </Paragraph>
-
         <Separator />
         <Paragraph ta="center">
           Made by{' '}
@@ -43,6 +46,10 @@ export function HomeScreen() {
             give it a ⭐️
           </Anchor>
         </Paragraph>
+        <Paragraph>You clicked me {countQuery.data?.body} times.</Paragraph>
+        <Button onPress={() => countMutation.mutate()} disabled={countMutation.isLoading}>
+          <Paragraph>Click me!</Paragraph>
+        </Button>
       </YStack>
 
       <XStack>

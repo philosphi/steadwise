@@ -1,5 +1,6 @@
 import { CustomToast, TamaguiProvider, TamaguiProviderProps, ToastProvider } from '@my/ui'
 import { useColorScheme } from 'react-native'
+import { TRPCProvider } from './trpc'
 
 import { ToastViewport } from './ToastViewport'
 import config from '../tamagui.config'
@@ -23,8 +24,7 @@ export function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'conf
           ]
         }
       >
-        {children}
-
+        <TRPCProvider>{children}</TRPCProvider>
         <CustomToast />
         <ToastViewport />
       </ToastProvider>
