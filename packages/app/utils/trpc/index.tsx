@@ -14,7 +14,7 @@ import { httpBatchLink } from '@trpc/client'
 export const trpc = createTRPCReact<AppRouter>()
 
 const getBaseUrl = () => {
-  return process.env.NEXT_PUBLIC_API_URL
+  return process.env.EXPO_PUBLIC_API_URL
 }
 
 export const TRPCProvider: React.FC<{
