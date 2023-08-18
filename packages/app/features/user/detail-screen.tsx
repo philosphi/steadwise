@@ -1,26 +1,31 @@
 import { Button, Paragraph, YStack } from '@my/ui'
-import { ChevronLeft } from '@tamagui/lucide-icons'
+import { useAuth } from 'app/provider/auth'
+import React, { useEffect, useState } from 'react'
 import { trpc } from 'app/utils/trpc'
-import React from 'react'
-import { createParam } from 'solito'
-import { useLink } from 'solito/link'
-
-const { useParam } = createParam<{ id: string }>()
+import { signOut } from 'app/utils/supabase'
+import { useRouter } from 'solito/router'
+import { AuthGate } from 'app/utils/supabase/gate'
 
 export function UserDetailScreen() {
-  const [id] = useParam('id')
-  const userQuery = trpc.user.getUser.useQuery(String(id));
-  const link = useLink({
-    href: '/',
-  })
+  const sessionQuery = trpc.auth.getSession.useQuery()
+  const sessionUser = sessionQuery?.data
+  const utils = trpc.useContext()
 
   return (
-    <YStack f={1} jc="center" ai="center" space>
-      <Paragraph ta="center" fow="700">{`User ID: ${id}`}</Paragraph>
-      <Paragraph ta="center" fow="700">{`User Name: ${userQuery.data?.name}`}</Paragraph>
-      <Button {...link} icon={ChevronLeft}>
-        Go Home
-      </Button>
-    </YStack>
+    <AuthGate>
+      <YStack f={1} jc="center" ai="center" space>
+        <Paragraph ta="center" fow="700">{`User Id: ${sessionUser?.id}`}</Paragraph>
+        <Button
+          onPress={async () => {
+            // TODO: Clear tanstack query cache of authenticated routes
+            utils.auth.secretMessage.setData(undefined, undefined)
+            await signOut()
+          }}
+          space="$2"
+        >
+          Sign Out
+        </Button>
+      </YStack>
+    </AuthGate>
   )
 }

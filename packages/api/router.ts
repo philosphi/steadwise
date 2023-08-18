@@ -1,10 +1,12 @@
 import { awsLambdaRequestHandler } from '@trpc/server/adapters/aws-lambda';
-import { countRouter } from './functions/count';
+import { countRouter } from './routes/count';
 import { router } from './trpc'
 import { createContext } from './context';
-import { userRouter } from './functions/user';
+import { userRouter } from './routes/user';
+import { authRouter } from './routes/auth';
 
 const appRouter = router({
+  auth: authRouter,
   count: countRouter,
   user: userRouter,
 });

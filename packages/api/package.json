@@ -4,6 +4,10 @@
   "private": true,
   "dependencies": {
     "@trpc/server": "^10.37.1",
-    "aws-lambda": "^1.0.7"
+    "jsonwebtoken": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.119",
+    "@types/jsonwebtoken": "^9.0.2"
   }
 }

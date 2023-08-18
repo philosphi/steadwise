@@ -52,9 +52,9 @@ export const countRouter = router({
         body: count,
       };
     } catch (e) {
-      console.log('Update Failed', e)
+      console.error('Update Failed', e)
       return {
-        statusCode: 400,
+        statusCode: 500,
       };
     }
   }),

@@ -53,3 +53,6 @@ thumbs.db
 
 # opennext
 .open-next
+
+# nvm
+.nvmrc

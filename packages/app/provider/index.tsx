@@ -4,6 +4,7 @@ import { TRPCProvider } from './trpc'
 
 import { ToastViewport } from './ToastViewport'
 import config from '../tamagui.config'
+import { AuthProvider } from './auth'
 
 export function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'config'>) {
   const scheme = useColorScheme()
@@ -24,7 +25,9 @@ export function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'conf
           ]
         }
       >
-        <TRPCProvider>{children}</TRPCProvider>
+        <AuthProvider>
+          <TRPCProvider>{children}</TRPCProvider>
+        </AuthProvider>
         <CustomToast />
         <ToastViewport />
       </ToastProvider>

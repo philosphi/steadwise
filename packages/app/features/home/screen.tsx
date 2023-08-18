@@ -1,60 +1,83 @@
 import {
-  Anchor,
   Button,
-  H1,
   Paragraph,
-  Separator,
   Sheet,
   useToastController,
-  XStack,
   YStack,
 } from '@my/ui'
 import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
-import React, { useState } from 'react'
-import { useLink } from 'solito/link'
+import React, { useEffect, useState } from 'react'
 import { trpc } from 'app/utils/trpc'
+import { sendPhoneOtp, verifyPhoneOtp } from 'app/utils/supabase'
+import Constants from 'expo-constants'
+import { SendPhoneOtp } from '@my/ui/src/SignInWithOtp/SendPhoneOtp'
+import { VerifyPhoneOtp } from '@my/ui/src/SignInWithOtp/VerifyPhoneOtp'
+import { useRouter } from 'solito/router'
+import { useAuth } from 'app/provider/auth'
+
 
 export function HomeScreen() {
+  const { isAuthenticated } = useAuth()
+  const { push } = useRouter()
   const countQuery = trpc.count.getCount.useQuery();
   const countMutation = trpc.count.addCount.useMutation();
+  const toast = useToastController()
+  const [isOtpSent, setIsOtpSent] = useState(false)
+  const [phone, setPhone] = useState('')
 
-  const linkProps = useLink({
-    href: '/user/nate',
-  })
+  useEffect(() => {
+    if (isAuthenticated) {
+      push("/user")
+    }
+  }, [isAuthenticated])
+
+  const handleSendPhoneOtp = async (phone: string) => {
+    const { error } = await sendPhoneOtp(phone)
+
+    if (error) {
+      const isExpoGo = Constants.appOwnership === 'expo'
+      if (!isExpoGo) {
+        toast.show('Failed to send code', {
+          description: error.message,
+        })
+      }
+      return
+    }
+
+    setIsOtpSent(true)
+    setPhone(phone)
+  }
+
+  const handleVerifyPhoneOtp = async (token: string) => {
+    const { error } = await verifyPhoneOtp(phone, token)
+
+    if (error) {
+      const isExpoGo = Constants.appOwnership === 'expo'
+      if (!isExpoGo) {
+        toast.show('Failed to verify code', {
+          description: error.message,
+        })
+      }
+      return
+    }
+  }
 
   return (
     <YStack f={1} jc="center" ai="center" p="$4" space>
       <YStack space="$4" maw={600}>
-        <H1 ta="center">Welcome to Tamagui.</H1>
-        <Paragraph ta="center">
-          Here's a basic starter to show navigating from one screen to another. This screen uses the
-          same code on Next.js and React Native.
-        </Paragraph>
-        <Separator />
-        <Paragraph ta="center">
-          Made by{' '}
-          <Anchor color="$color12" href="https://twitter.com/natebirdman" target="_blank">
-            @natebirdman
-          </Anchor>
-          ,{' '}
-          <Anchor
-            color="$color12"
-            href="https://github.com/tamagui/tamagui"
-            target="_blank"
-            rel="noreferrer"
-          >
-            give it a ⭐️
-          </Anchor>
-        </Paragraph>
         <Paragraph>You clicked me {countQuery.data?.body} times.</Paragraph>
         <Button onPress={() => countMutation.mutate()} disabled={countMutation.isLoading}>
           <Paragraph>Click me!</Paragraph>
         </Button>
       </YStack>
 
-      <XStack>
-        <Button {...linkProps}>Link to user</Button>
-      </XStack>
+      <YStack flex={1} justifyContent="center" alignItems="center" space>
+        {isOtpSent ?
+          <VerifyPhoneOtp handleVerifyPhoneOtp={handleVerifyPhoneOtp} />
+          :
+          <SendPhoneOtp handleSendPhoneOtp={handleSendPhoneOtp} />
+        }
+      </YStack>
 
       <SheetDemo />
     </YStack>

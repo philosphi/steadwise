@@ -1,5 +1,6 @@
 import { createTRPCReact } from '@trpc/react-query'
 import type { AppRouter } from '@my/api/router'
+import { supabase } from '../supabase/auth'
 
 /**
  * A wrapper for your app that provides the TRPC context.
@@ -14,7 +15,7 @@ import { httpBatchLink } from '@trpc/client'
 export const trpc = createTRPCReact<AppRouter>()
 
 const getBaseUrl = () => {
-  return process.env.EXPO_PUBLIC_API_URL
+  return process.env.DEV_API_URL
 }
 
 export const TRPCProvider: React.FC<{
@@ -25,6 +26,14 @@ export const TRPCProvider: React.FC<{
     trpc.createClient({
       links: [
         httpBatchLink({
+          async headers() {
+            const { data } = await supabase.auth.getSession()
+            const token = data?.session?.access_token
+
+            return {
+              Authorization: token ? `Bearer ${token}` : undefined,
+            }
+          },
           url: `${getBaseUrl()}/trpc`,
         }),
       ],
