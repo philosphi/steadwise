@@ -1,6 +1,5 @@
 import {
   Button,
-  Paragraph,
   Sheet,
   useToastController,
   YStack,
@@ -12,24 +11,13 @@ import { sendPhoneOtp, verifyPhoneOtp } from 'app/utils/supabase'
 import Constants from 'expo-constants'
 import { SendPhoneOtp } from '@my/ui/src/SignInWithOtp/SendPhoneOtp'
 import { VerifyPhoneOtp } from '@my/ui/src/SignInWithOtp/VerifyPhoneOtp'
-import { useRouter } from 'solito/router'
-import { useAuth } from 'app/provider/auth'
 
-
-export function HomeScreen() {
-  const { isAuthenticated } = useAuth()
-  const { push } = useRouter()
+export function AuthScreen() {
   const countQuery = trpc.count.getCount.useQuery();
   const countMutation = trpc.count.addCount.useMutation();
   const toast = useToastController()
   const [isOtpSent, setIsOtpSent] = useState(false)
   const [phone, setPhone] = useState('')
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      push("/user")
-    }
-  }, [isAuthenticated])
 
   const handleSendPhoneOtp = async (phone: string) => {
     const { error } = await sendPhoneOtp(phone)
@@ -64,13 +52,6 @@ export function HomeScreen() {
 
   return (
     <YStack f={1} jc="center" ai="center" p="$4" space>
-      <YStack space="$4" maw={600}>
-        <Paragraph>You clicked me {countQuery.data?.body} times.</Paragraph>
-        <Button onPress={() => countMutation.mutate()} disabled={countMutation.isLoading}>
-          <Paragraph>Click me!</Paragraph>
-        </Button>
-      </YStack>
-
       <YStack flex={1} justifyContent="center" alignItems="center" space>
         {isOtpSent ?
           <VerifyPhoneOtp handleVerifyPhoneOtp={handleVerifyPhoneOtp} />
@@ -78,7 +59,6 @@ export function HomeScreen() {
           <SendPhoneOtp handleSendPhoneOtp={handleSendPhoneOtp} />
         }
       </YStack>
-
       <SheetDemo />
     </YStack>
   )

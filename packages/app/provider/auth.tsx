@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { supabase } from '../utils/supabase'; // Replace with your Supabase client setup
 import { User, UserResponse } from '@supabase/supabase-js';
-import { useRouter } from 'solito/router';
 
 interface AuthContextType {
   user: User | null,

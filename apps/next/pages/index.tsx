@@ -1,4 +1,4 @@
-import { HomeScreen } from 'app/features/home/screen'
+import UserScreen from 'app/user'
 import Head from 'next/head'
 
 export default function Page() {
@@ -7,7 +7,7 @@ export default function Page() {
       <Head>
         <title>Home</title>
       </Head>
-      <HomeScreen />
+      <UserScreen />
     </>
   )
 }
