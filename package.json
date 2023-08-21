@@ -9,7 +9,7 @@
     "native": "cd apps/expo && yarn start",
     "watch": "yarn workspaces foreach -pi run watch",
     "vercel:install": "yarn set version 3.5 && yarn install",
-    "web": "yarn build && cd apps/next && yarn next",
+    "web": "yarn build && sst bind 'yarn workspace next-app dev'",
     "web:extract": "DISABLE_EXTRACTION=false yarn workspace next-app dev",
     "web:prod": "yarn workspace next-app build",
     "web:prod:serve": "yarn workspace next-app serve",
@@ -36,6 +36,7 @@
     "node-gyp": "^9.3.1",
     "prettier": "^2.7.1",
     "react-native-url-polyfill": "^2.0.0",
+    "sst": "2.24.9",
     "turbo": "^1.10.3",
     "typescript": "^5.1.3"
   },

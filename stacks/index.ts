@@ -1,6 +1,6 @@
-import { StackContext, Table, Api, NextjsSite, Bucket, Config } from "sst/constructs";
+import { StackContext, Table, Api, NextjsSite, Config } from "sst/constructs";
 
-export function AppStack({ stack }: StackContext) {
+export function Default({ stack }: StackContext) {
 
   const JWT_VERIFICATION_KEY = new Config.Secret(stack, "JWT_VERIFICATION_KEY");
 
@@ -27,8 +27,8 @@ export function AppStack({ stack }: StackContext) {
       },
     },
     routes: {
-      "GET /trpc/{proxy+}": "../../packages/api/router.handler",
-      "POST /trpc/{proxy+}": "../../packages/api/router.handler",
+      "GET /trpc/{proxy+}": "packages/api/router.handler",
+      "POST /trpc/{proxy+}": "packages/api/router.handler",
     },
   });
 
