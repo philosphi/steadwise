@@ -26,8 +26,7 @@ export function AuthProvider({ children }: {
   useEffect(() => {
     const { data: { subscription: authListener } } = supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_IN') {
-        setIsAuthenticated(true)
-        setIsLoading(false)
+        checkUser()
       } else if (event === 'SIGNED_OUT') {
         setIsAuthenticated(false)
         setIsLoading(false)

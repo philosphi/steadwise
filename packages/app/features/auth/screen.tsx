@@ -5,16 +5,13 @@ import {
   YStack,
 } from '@my/ui'
 import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
-import React, { useEffect, useState } from 'react'
-import { trpc } from 'app/utils/trpc'
+import React, { useState } from 'react'
 import { sendPhoneOtp, verifyPhoneOtp } from 'app/utils/supabase'
 import Constants from 'expo-constants'
 import { SendPhoneOtp } from '@my/ui/src/SignInWithOtp/SendPhoneOtp'
 import { VerifyPhoneOtp } from '@my/ui/src/SignInWithOtp/VerifyPhoneOtp'
 
 export function AuthScreen() {
-  const countQuery = trpc.count.getCount.useQuery();
-  const countMutation = trpc.count.addCount.useMutation();
   const toast = useToastController()
   const [isOtpSent, setIsOtpSent] = useState(false)
   const [phone, setPhone] = useState('')

@@ -1,14 +1,11 @@
 import { Button, Paragraph, YStack } from '@my/ui'
 import { useAuth } from 'app/provider/auth'
-import React, { useEffect, useState } from 'react'
-import { trpc } from 'app/utils/trpc'
+import React from 'react'
 import { signOut } from 'app/utils/supabase'
 import { AuthGate } from 'app/utils/supabase/gate'
-import { useUser } from '@supabase/auth-helpers-react'
 
 export function UserScreen() {
   const { user } = useAuth()
-  const utils = trpc.useContext()
 
   return (
     <AuthGate>
