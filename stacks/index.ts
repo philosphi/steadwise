@@ -33,6 +33,7 @@ export function Default({ stack }: StackContext) {
   });
 
   const site = new NextjsSite(stack, "site", {
+    path: 'apps/next',
     environment: {
       NEXT_PUBLIC_API_URL: api.url,
     }

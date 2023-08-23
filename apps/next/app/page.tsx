@@ -1,5 +1,15 @@
 'use client'
 
-import { AuthScreen } from 'app/features/auth/screen'
+import { UserScreen } from 'app/features/user/screen'
+import Head from 'next/head'
 
-export default AuthScreen
+export default function Page() {
+  return (
+    <>
+      <Head>
+        <title>Home</title>
+      </Head>
+      <UserScreen />
+    </>
+  )
+}

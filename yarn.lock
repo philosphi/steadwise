@@ -9024,7 +9024,7 @@ __metadata:
     expo-linking: ^4.0.1
     expo-secure-store: ^12.3.1
     react-native-safe-area-context: ^4.5.2
-    solito: ^3.0.0
+    solito: ^4.0.0
   languageName: unknown
   linkType: soft
 
@@ -18542,7 +18542,6 @@ __metadata:
     react-native: ^0.71.4
     react-native-web: ^0.18.12
     react-native-web-lite: latest
-    sst: ^2.24.9
     vercel: latest
   languageName: unknown
   linkType: soft
@@ -18559,7 +18558,7 @@ __metadata:
     node-gyp: ^9.3.1
     prettier: ^2.7.1
     react-native-url-polyfill: ^2.0.0
-    sst: ^2.24.9
+    sst: 2.24.9
     turbo: ^1.10.3
     typescript: ^5.1.3
   languageName: unknown
@@ -21816,10 +21815,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"solito@npm:^3.0.0":
-  version: 3.2.6
-  resolution: "solito@npm:3.2.6"
-  checksum: c8ff1732b969748b7be71037a284927d7e57965fca1b405d168a6bf288ea9810baa8e19413752d06d71edc51799879db657ec894ebb9a354d3cf57fa4d7c629a
+"solito@npm:^4.0.0":
+  version: 4.0.1
+  resolution: "solito@npm:4.0.1"
+  dependencies:
+    typescript: ^5.0.4
+  checksum: 2148da025f3943c78009049c362a23ea2e08b9b430dc5ba4eb3b681faf618dad513847de7f95407575e9adf6dfda3a8060d12f69a7c1e018bbcf70b3b0f5b308
   languageName: node
   linkType: hard
 
@@ -22012,9 +22013,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sst@npm:^2.24.9":
-  version: 2.24.11
-  resolution: "sst@npm:2.24.11"
+"sst@npm:2.24.9":
+  version: 2.24.9
+  resolution: "sst@npm:2.24.9"
   dependencies:
     "@aws-cdk/aws-apigatewayv2-alpha": ^2.91.0-alpha.0
     "@aws-cdk/aws-apigatewayv2-authorizers-alpha": ^2.91.0-alpha.0
@@ -22092,7 +22093,7 @@ __metadata:
       optional: true
   bin:
     sst: cli/sst.js
-  checksum: a6f92a91a40e2b5033922b1abb1fe63067faaa4307a9fc0196de6782b2fb69e0fa80c3a7724d2296583f33beabf020e99b77817f4e51f91b100465632253d2e1
+  checksum: bffff3877c6f8ae6e08fbc4ef2f6b6f2054578704e687363e5fee6a8db720b4dd35cab1cb81147567f6bcefd060c13d7bc6960104609cb5ef991d160cb514382
   languageName: node
   linkType: hard
 
@@ -23254,6 +23255,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:^5.0.4":
+  version: 5.1.6
+  resolution: "typescript@npm:5.1.6"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: b2f2c35096035fe1f5facd1e38922ccb8558996331405eb00a5111cc948b2e733163cc22fab5db46992aba7dd520fff637f2c1df4996ff0e134e77d3249a7350
+  languageName: node
+  linkType: hard
+
 "typescript@npm:^5.1.3":
   version: 5.1.3
   resolution: "typescript@npm:5.1.3"
@@ -23271,6 +23282,16 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 6ccc2e1148e172da119ea4b72c66395a0c18a53884d21fb82bb4503a948a7169e9961defe24a359040a3d77bf5ff338945804296e0e27c87b5bd22ea1d25781b
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^5.0.4#~builtin<compat/typescript>":
+  version: 5.1.6
+  resolution: "typescript@patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=85af82"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 21e88b0a0c0226f9cb9fd25b9626fb05b4c0f3fddac521844a13e1f30beb8f14e90bd409a9ac43c812c5946d714d6e0dee12d5d02dfc1c562c5aacfa1f49b606
   languageName: node
   linkType: hard
 

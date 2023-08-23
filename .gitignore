@@ -56,3 +56,6 @@ thumbs.db
 
 # nvm
 .nvmrc
+
+#history
+.history

@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import { useAuth } from '../../provider/auth'
 import { AuthScreen } from 'app/features/auth/screen'

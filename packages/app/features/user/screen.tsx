@@ -1,3 +1,5 @@
+'use client'
+
 import { Button, Paragraph, YStack } from '@my/ui'
 import { useAuth } from 'app/provider/auth'
 import React from 'react'
