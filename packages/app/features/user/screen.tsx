@@ -1,10 +1,10 @@
 'use client'
 
-import { Button, Paragraph, YStack } from '@my/ui'
-import { useAuth } from 'app/provider/auth'
+import { Button, Paragraph, YStack } from '@steadwise/ui'
+import { useAuth } from '@steadwise/app/provider/auth'
 import React from 'react'
-import { signOut } from 'app/utils/supabase'
-import { AuthGate } from 'app/utils/supabase/gate'
+import { signOut } from '@steadwise/app/utils/supabase'
+import { AuthGate } from '@steadwise/app/utils/supabase/gate'
 
 export function UserScreen() {
   const { user } = useAuth()

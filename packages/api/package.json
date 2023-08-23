@@ -1,5 +1,5 @@
 {
-  "name": "@my/api",
+  "name": "@steadwise/api",
   "version": "0.0.0",
   "private": true,
   "dependencies": {

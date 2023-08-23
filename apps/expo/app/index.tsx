@@ -1,4 +1,4 @@
-import { UserScreen } from 'app/features/user/screen'
+import { UserScreen } from '@steadwise/app/features/user/screen'
 import { Stack } from 'expo-router'
 
 export default function Screen() {

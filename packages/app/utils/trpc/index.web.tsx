@@ -1,7 +1,7 @@
 import { createTRPCNext } from '@trpc/next'
 import { httpBatchLink, loggerLink } from '@trpc/client'
 import { inferRouterInputs, inferRouterOutputs } from '@trpc/server'
-import type { AppRouter } from '@my/api/router'
+import type { AppRouter } from '@steadwise/api/router'
 import { supabase } from '../supabase/auth'
 
 const getBaseUrl = () => {

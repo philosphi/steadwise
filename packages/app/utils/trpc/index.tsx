@@ -1,5 +1,5 @@
 import { createTRPCReact } from '@trpc/react-query'
-import type { AppRouter } from '@my/api/router'
+import type { AppRouter } from '@steadwise/api/router'
 import { supabase } from '../supabase/auth'
 
 /**

@@ -11,7 +11,7 @@ module.exports = function (api) {
           alias: {
             // define aliases to shorten the import paths
             app: '../../packages/app',
-            '@my/ui': '../../packages/ui',
+            '@steadwise/ui': '../../packages/ui',
           },
           extensions: ['.js', '.jsx', '.tsx', '.ios.js', '.android.js'],
         },
@@ -21,14 +21,14 @@ module.exports = function (api) {
       ...(process.env.EAS_BUILD_PLATFORM === 'android'
         ? []
         : [
-            [
-              '@tamagui/babel-plugin',
-              {
-                components: ['@my/ui', 'tamagui'],
-                config: './tamagui.config.ts',
-              },
-            ],
-          ]),
+          [
+            '@tamagui/babel-plugin',
+            {
+              components: ['@steadwise/ui', 'tamagui'],
+              config: './tamagui.config.ts',
+            },
+          ],
+        ]),
       'transform-inline-environment-variables',
     ],
   };

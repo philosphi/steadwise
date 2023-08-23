@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useAuth } from '../../provider/auth'
-import { AuthScreen } from 'app/features/auth/screen'
+import { AuthScreen } from '@steadwise/app/features/auth/screen'
 
 export const AuthGate: React.FC<{
   children: React.ReactNode

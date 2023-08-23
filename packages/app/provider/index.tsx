@@ -1,4 +1,4 @@
-import { CustomToast, TamaguiProvider, TamaguiProviderProps, ToastProvider } from '@my/ui'
+import { CustomToast, TamaguiProvider, TamaguiProviderProps, ToastProvider } from '@steadwise/ui'
 import { useColorScheme } from 'react-native'
 import { TRPCProvider } from './trpc'
 import { ToastViewport } from './ToastViewport'

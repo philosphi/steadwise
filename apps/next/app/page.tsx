@@ -1,6 +1,6 @@
 'use client'
 
-import { UserScreen } from 'app/features/user/screen'
+import { UserScreen } from '@steadwise/app/features/user/screen'
 import Head from 'next/head'
 
 export default function Page() {

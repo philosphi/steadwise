@@ -3,13 +3,13 @@ import {
   Sheet,
   useToastController,
   YStack,
-} from '@my/ui'
+} from '@steadwise/ui'
 import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
 import React, { useState } from 'react'
-import { sendPhoneOtp, verifyPhoneOtp } from 'app/utils/supabase'
+import { sendPhoneOtp, verifyPhoneOtp } from '@steadwise/app/utils/supabase'
 import Constants from 'expo-constants'
-import { SendPhoneOtp } from '@my/ui/src/SignInWithOtp/SendPhoneOtp'
-import { VerifyPhoneOtp } from '@my/ui/src/SignInWithOtp/VerifyPhoneOtp'
+import { SendPhoneOtp } from '@steadwise/ui/src/SignInWithOtp/SendPhoneOtp'
+import { VerifyPhoneOtp } from '@steadwise/ui/src/SignInWithOtp/VerifyPhoneOtp'
 
 export function AuthScreen() {
   const toast = useToastController()
