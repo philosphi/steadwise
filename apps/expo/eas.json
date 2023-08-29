@@ -10,7 +10,10 @@
         "image": "latest"
       },
       "env": {
-        "TAMAGUI_TARGET": "native"
+        "TAMAGUI_TARGET": "native",
+        "EXPO_PUBLIC_DEV_API_URL": "https://xlryapd6jl.execute-api.us-east-1.amazonaws.com",
+        "NEXT_PUBLIC_SUPABASE_URL": "https://tvrifnlfxteboywneivm.supabase.co",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR2cmlmbmxmeHRlYm95d25laXZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTE4NzgxMjMsImV4cCI6MjAwNzQ1NDEyM30.oofgvq7R6G_FPOntVHb4bh7DtlFdlDXoJUpn9zjd7ys"
       }
     },
     "production": {

@@ -10,7 +10,7 @@ module.exports = function (api) {
           root: ['../..'],
           alias: {
             // define aliases to shorten the import paths
-            app: '../../packages/app',
+            '@steadwise/app': '../../packages/app',
             '@steadwise/ui': '../../packages/ui',
           },
           extensions: ['.js', '.jsx', '.tsx', '.ios.js', '.android.js'],
@@ -29,7 +29,16 @@ module.exports = function (api) {
             },
           ],
         ]),
-      'transform-inline-environment-variables',
+      ['transform-inline-environment-variables', {
+        "exclude": [
+          "EXPO_ROUTER_APP_ROOT",
+          "EXPO_ROUTER_PROJECT_ROOT",
+          "EXPO_ROUTER_IMPORT_MODE",
+          "EXPO_ROUTER_IMPORT_MODE_ANDROID",
+          "EXPO_ROUTER_IMPORT_MODE_IOS",
+          "EXPO_ROUTER_IMPORT_MODE_WEB",
+        ]
+      }],
     ],
   };
 };

@@ -8,6 +8,7 @@
 
 # expo
 **/.expo/*
+**/expo/android
 
 # next.js
 **/.next/*
